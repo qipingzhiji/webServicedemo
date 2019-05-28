@@ -37,6 +37,7 @@ public class Producter {
 
     //发送消息
     public void sendMessage(String queueName) throws  Exception{
+        int i = 0;
         //消息队列
         Queue queue = session.createQueue(queueName);
         //消息生产者
@@ -56,7 +57,12 @@ public class Producter {
             System.out.println(textMessage.getText());
             //提交事务
             session.commit();
+            i++;
+            if(i > 2) {
+                return;
+            }
         }
+
 
     }
 

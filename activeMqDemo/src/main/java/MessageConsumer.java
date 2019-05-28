@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MessageConsumer {
-    //生产者消费
+    //消费者消费消息
     public static void main(String[] args) throws Exception{
         Comsumer comsumer = new Comsumer();
         comsumer.init();
