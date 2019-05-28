@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>cxfClient</module>
+        <module>activeMqDemo</module>
     </modules>
     <dependencies>
         <!--servlet依赖-->
