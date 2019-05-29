@@ -4,7 +4,6 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-import javax.swing.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 //消息消费者

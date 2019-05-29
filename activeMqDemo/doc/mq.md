@@ -1,4 +1,5 @@
 **参考文档**  [cnblogs:activemq的概念及基本用法](https://www.cnblogs.com/jaycekon/p/6225058.html)  
+[activeMq的使用场景](https://www.cnblogs.com/shamo89/p/8010660.html)
 ## activeMq的基本特性：  
 1. 多种语言和协议编写客户端。语言: Java, C, C++, C#, Ruby, Perl, Python, PHP。应用协议: OpenWire,Stomp REST,WS Notification,XMPP,AMQP
 2. 完全支持JMS1.1和J2EE 1.4规范 (持久化,XA消息,事务)
@@ -11,6 +12,8 @@
 9. 支持与Axis的整合
 10.可以很容易得调用内嵌JMS provider,进行测试  
 ## activeMq的使用场景  
-1. 适用于多平台，多语言，多项目  
-2. 降低系统间的耦合度  
-3. 系统前后端分离  
+1. 异步处理  
+2. 应用解耦
+3. 流量销峰
+4. 消息通讯
+
