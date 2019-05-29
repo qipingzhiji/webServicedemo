@@ -16,7 +16,7 @@ public class AxisClient {
         options.setTimeOutInMilliSeconds(2 * 20000L);
         options.setTo(targetERP);
         //参数1代表：在网页上执行 wsdl后xs:schema标签的targetNamespace路径 例如： <xs:schema  targetNamespace="http://axis2.com">
-        //参数2代表： 2：<xs:element name="test"> ======这个标签中name的值
+        //参数2代表： <xs:element name="test"> ======这个标签中name的值
         QName qName = new QName("http://webService.com", "test");
         //请求服务端方法的入参
         String str = "我是客户端";
