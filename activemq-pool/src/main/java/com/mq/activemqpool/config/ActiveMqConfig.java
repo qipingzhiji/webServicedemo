@@ -17,16 +17,26 @@ import javax.jms.Topic;
 @EnableJms
 public class ActiveMqConfig {
 
+    @Autowired
+    private ActiveMqProperties activeMqProperties;
+
     //消息队列的发布订阅模式
     @Bean(name = "topic")
     public Topic topic()  {
-        return new ActiveMQTopic("video.topic");
+        return new ActiveMQTopic(activeMqProperties.getTopic());
     }
 
     //消息队列的点对点模式
     @Bean(name = "queue")
     public Queue queue() {
-        return new ActiveMQQueue("common.queue");
+        return new ActiveMQQueue(activeMqProperties.getQueue());
+    }
+
+    @Bean(name = "jmsListenerQueue")
+    public  JmsListenerContainerFactory<?> jmsListenerContainerQueue(ConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory jmsListenerContainerFactory = new DefaultJmsListenerContainerFactory();
+        jmsListenerContainerFactory.setConnectionFactory(connectionFactory);
+        return jmsListenerContainerFactory;
     }
 
     //自定义同时开启pub_sub和点对点模式，因为activemq默认只支持一种模式

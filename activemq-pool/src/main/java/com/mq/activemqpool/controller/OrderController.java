@@ -1,6 +1,9 @@
 package com.mq.activemqpool.controller;
 
-import com.mq.activemqpool.service.ProcedureServiceImpl;
+import com.mq.activemqpool.config.ActiveMqProperties;
+import com.mq.activemqpool.service.ProcedureService;
+import com.mq.activemqpool.service.impl.ProcedureServiceImpl;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +15,10 @@ import javax.jms.Queue;
 public class OrderController {
 
     @Autowired
-    private ProcedureServiceImpl procedureService;
+    private ProcedureService procedureService;
+
+    @Autowired
+    private ActiveMqProperties activeMqProperties;
 
     @Autowired
     @Qualifier(value = "queue")
@@ -20,6 +26,7 @@ public class OrderController {
 
     @GetMapping("order")
     public String getOrder(String msg) {
+        System.out.println(activeMqProperties.toString());
         procedureService.sendMessage(queue, msg);
         return "success";
     }
