@@ -17,7 +17,8 @@
 + 分布层（Distributed layer）：包含可以使管理应用与JMX Agents交互的组件。一旦通过交互组件与JMX Agents建立连接，用户可以用管理工具来和注册在Agents中的MBeans进行交互；
 + 代理层（Agent layer ）：包含JMX Agent以及它们包含的MBean Servers。Agent layer的主要组件是MBean server，作为JMX Agents的核心，它充当MBeans的注册中心。该层提供了4个Agent 服务来使对MBean的管理更容易：计时器（Timer）、监控（monitoring）、动态加载MBean（dynamic MBean loading ）、关系服务（relationship services ）；
 + 指示层（Instrumentation layer ）：包含代表可管理资源的MBeans。该层是最接近管理资源的，它由注册在Agents中的MBeans组成，这个MBean允许通过JMX Agent来管理。每个MBean都暴露出来针对底层资源的操作和访问；
-![架构图](./pic/20170430234500203.png)    
+![架构图](./pic/20170430234500203.png)   
+![jmx总体设计](./pic/831179-20160924113748309-1785034710.png) 
 
 
 [jmx超详细解读](https://www.cnblogs.com/dongguacai/p/5900507.html)  
