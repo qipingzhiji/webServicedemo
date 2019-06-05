@@ -29,6 +29,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.external</groupId>
+			<artifactId>opendmk_jdmkrt_jar</artifactId>
+			<version>1.0-b01-ea</version>
+		</dependency>
 	</dependencies>
 
 	<build>
