@@ -3,16 +3,21 @@ package com.springboot.jmxdemo.mbean2;
 import com.sun.jdmk.comm.HtmlAdaptorServer;
 
 import javax.management.*;
+import javax.management.remote.JMXConnectorServer;
+import javax.management.remote.JMXConnectorServerFactory;
+import javax.management.remote.JMXServiceURL;
 import java.lang.management.ManagementFactory;
+import java.rmi.registry.LocateRegistry;
 
 public class ClientAgent {
 
     public static void main(String[] args) throws Exception {
-        jconsoleAgent();
+        remoteAgent();
     }
 
     /**
      * htmlAdaptor
+     *
      * @throws MalformedObjectNameException
      * @throws InstanceAlreadyExistsException
      * @throws MBeanRegistrationException
@@ -30,12 +35,30 @@ public class ClientAgent {
 
     /**
      * jconsole连接
+     *
      * @throws Exception
      */
     private static void jconsoleAgent() throws Exception {
         MBeanServer server = ManagementFactory.getPlatformMBeanServer();
         ObjectName helloName = new ObjectName("jmxbean:name=hello");
         server.registerMBean(new Hello(), helloName);
-        Thread.sleep(60*60*1000);
+        Thread.sleep(60 * 60 * 1000);
+    }
+
+    /**
+     * 进行远程客户端的访问
+     *
+     * @throws Exception
+     */
+    private static void remoteAgent() throws Exception {
+        MBeanServer server = MBeanServerFactory.createMBeanServer();
+        ObjectName objectName = new ObjectName("mbeanserver:name=hello");
+        server.registerMBean(new Hello(), objectName);
+        LocateRegistry.createRegistry(9999);
+        JMXServiceURL url = new JMXServiceURL("services:jmx:rmi:///jndi/rmi://localhost:9999/jmxrmi");
+        JMXConnectorServer jmxConnectorServer = JMXConnectorServerFactory.newJMXConnectorServer(url,null,server);
+        System.out.println("begin rmi start");
+        jmxConnectorServer.start();
+        System.out.println("rmi start");
     }
 }

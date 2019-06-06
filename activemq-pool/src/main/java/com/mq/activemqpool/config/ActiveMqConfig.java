@@ -31,7 +31,7 @@ public class ActiveMqConfig {
     public Queue queue() {
         return new ActiveMQQueue(activeMqProperties.getQueue());
     }
-
+    //这种方式开启的是mq中的点对点模式的消息传递
     @Bean(name = "jmsListenerQueue")
     public  JmsListenerContainerFactory<?> jmsListenerContainerQueue(ConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory jmsListenerContainerFactory = new DefaultJmsListenerContainerFactory();
